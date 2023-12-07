@@ -3,7 +3,9 @@ package com.example.androidcalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -37,8 +39,12 @@ public class AdvanceActivity extends AppCompatActivity {
     private TextView inputDisplay, outputDisplay;
     private DecimalFormat decimalFormat;
 
+    private Vibrator vibrator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.advance);
 
@@ -77,6 +83,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "0");
             }
         });
@@ -84,6 +91,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "1");
             }
         });
@@ -91,6 +99,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "2");
             }
         });
@@ -98,6 +107,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "3");
             }
         });
@@ -105,6 +115,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "4");
             }
         });
@@ -112,6 +123,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "5");
             }
         });
@@ -119,6 +131,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "6");
             }
         });
@@ -126,6 +139,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "7");
             }
         });
@@ -133,6 +147,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "8");
             }
         });
@@ -140,6 +155,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "9");
             }
         });
@@ -147,6 +163,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 String currentInput = inputDisplay.getText().toString();
                 if (!currentInput.isEmpty()) {
                     double value = Double.parseDouble(currentInput);
@@ -159,6 +176,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = ADDITION;
                 outputDisplay.setText(decimalFormat.format(endValue) + "+");
@@ -169,6 +187,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = SUBTRACTION;
                 outputDisplay.setText(decimalFormat.format(endValue) + "-");
@@ -179,6 +198,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = MULTIPLICATION;
                 outputDisplay.setText(decimalFormat.format(endValue) + "x");
@@ -189,6 +209,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = DIVISION;
                 outputDisplay.setText(decimalFormat.format(endValue) + "/");
@@ -199,6 +220,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + ".");
             }
         });
@@ -206,6 +228,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 if (inputDisplay.getText().length() > 0) {
                     CharSequence currentText = inputDisplay.getText();
                     inputDisplay.setText(currentText.subSequence(0, currentText.length() - 1));
@@ -216,6 +239,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 operateValue = Double.NaN;
                 endValue = Double.NaN;
                 currentSymbol = '0';
@@ -227,6 +251,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 outputDisplay.setText(decimalFormat.format(endValue));
                 inputDisplay.setText("");
@@ -238,6 +263,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = PROC;
                 outputDisplay.setText(decimalFormat.format(endValue) + "%");
@@ -248,6 +274,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 currentSymbol = SQRT;
                 allCalculations();
                 outputDisplay.setText(decimalFormat.format(endValue));
@@ -258,6 +285,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 currentSymbol = POW;
                 allCalculations();
                 outputDisplay.setText(decimalFormat.format(endValue));
@@ -268,6 +296,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = POWY;
                 outputDisplay.setText(decimalFormat.format(endValue)+"^");
@@ -278,6 +307,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 currentSymbol = SIN;
                 allCalculations();
                 outputDisplay.setText(decimalFormat.format(endValue));
@@ -288,6 +318,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 currentSymbol = COS;
                 allCalculations();
                 outputDisplay.setText(decimalFormat.format(endValue));
@@ -298,6 +329,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 currentSymbol = TAN;
                 allCalculations();
                 outputDisplay.setText(decimalFormat.format(endValue));
@@ -308,6 +340,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 currentSymbol = LOGARITHM_NATURAL;
                 allCalculations();
                 outputDisplay.setText(decimalFormat.format(endValue));
@@ -318,6 +351,7 @@ public class AdvanceActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = LOGARITHM;
                 outputDisplay.setText("log"+decimalFormat.format(endValue));

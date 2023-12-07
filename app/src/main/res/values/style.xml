@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="MyButtonStyle">
-        <!-- Tło przycisku -->
-
-        <!-- Kolor tekstu w przycisku -->
-        <item name="android:textColor">@color/gold</item> <!-- Kolor tekstu, np. biały -->
+        <item name="android:textColor">@color/gold</item>
         <item name="android:background">@drawable/normal_button_border</item>
         <item name="android:padding">6dp</item>
     </style>
     <style name="functionbutton">
-        <!-- Tło przycisku -->
-
-        <!-- Kolor tekstu w przycisku -->
-        <item name="android:textColor">@color/gold</item> <!-- Kolor tekstu, np. biały -->
+        <item name="android:textColor">@color/gold</item>
         <item name="android:background">@drawable/function_button_border</item>
         <item name="android:padding">6dp</item>
     </style>
     <style name="menu_button">
-        <!-- Tło przycisku -->
-
-        <!-- Kolor tekstu w przycisku -->
-        <item name="android:textColor">@color/gold</item> <!-- Kolor tekstu, np. biały -->
+        <item name="android:textColor">@color/gold</item>
         <item name="android:background">@drawable/menu_button_border</item>
-        <item name="android:padding">6dp</item>
+        <item name="android:padding">10dp</item>
+    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:statusBarColor">@color/verydarkred</item>
     </style>
 </resources>

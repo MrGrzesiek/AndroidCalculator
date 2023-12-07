@@ -3,7 +3,9 @@ package com.example.androidcalculator;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -12,6 +14,8 @@ import android.widget.Toast;
 import java.text.DecimalFormat;
 
 public class SimpleActivity extends AppCompatActivity {
+
+
 
     private static final char ADDITION = '+';
     private static final char SUBTRACTION = '-';
@@ -23,9 +27,12 @@ public class SimpleActivity extends AppCompatActivity {
     private double endValue =  Double.NaN;
     private TextView inputDisplay, outputDisplay;
     private DecimalFormat decimalFormat;
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.simple);
 
@@ -56,6 +63,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "0");
             }
         });
@@ -63,6 +71,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "1");
             }
         });
@@ -70,6 +79,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "2");
             }
         });
@@ -77,6 +87,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "3");
             }
         });
@@ -84,6 +95,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "4");
             }
         });
@@ -91,6 +103,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "5");
             }
         });
@@ -98,6 +111,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "6");
             }
         });
@@ -105,6 +119,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "7");
             }
         });
@@ -112,6 +127,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "8");
             }
         });
@@ -119,6 +135,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + "9");
             }
         });
@@ -126,6 +143,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 String currentInput = inputDisplay.getText().toString();
                 if (!currentInput.isEmpty()) {
                     double value = Double.parseDouble(currentInput);
@@ -138,6 +156,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = ADDITION;
                 outputDisplay.setText(decimalFormat.format(endValue) + "+");
@@ -148,6 +167,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = SUBTRACTION;
                 outputDisplay.setText(decimalFormat.format(endValue) + "-");
@@ -158,6 +178,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = MULTIPLICATION;
                 outputDisplay.setText(decimalFormat.format(endValue) + "x");
@@ -168,6 +189,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 currentSymbol = DIVISION;
                 outputDisplay.setText(decimalFormat.format(endValue) + "/");
@@ -178,6 +200,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 inputDisplay.setText(inputDisplay.getText() + ".");
             }
         });
@@ -185,6 +208,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 if (inputDisplay.getText().length() > 0) {
                     CharSequence currentText = inputDisplay.getText();
                     inputDisplay.setText(currentText.subSequence(0, currentText.length() - 1));
@@ -195,6 +219,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 operateValue = Double.NaN;
                 endValue = Double.NaN;
                 currentSymbol = '0';
@@ -206,6 +231,7 @@ public class SimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 animation.button_flash(view);
+                animation.performVibration(vibrator);
                 allCalculations();
                 outputDisplay.setText(decimalFormat.format(endValue));
                 inputDisplay.setText("");

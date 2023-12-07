@@ -2,15 +2,20 @@ package com.example.androidcalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -22,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 animation.button_flash(v);
+                animation.performVibration(vibrator);
                 finish();
                 System.exit(0);
             }
@@ -30,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 animation.button_flash(v);
+                animation.performVibration(vibrator);
                 Intent intent = new Intent(MainActivity.this, AdvanceActivity.class);
                 startActivity(intent);
             }
@@ -38,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 animation.button_flash(v);
+                animation.performVibration(vibrator);
                 Intent intent = new Intent(MainActivity.this, SimpleActivity.class);
                 startActivity(intent);
             }
@@ -46,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 animation.button_flash(v);
+                animation.performVibration(vibrator);
                 Intent intent = new Intent(MainActivity.this, AboutActivity.class);
                 startActivity(intent);
             }
