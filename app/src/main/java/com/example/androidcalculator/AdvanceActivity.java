@@ -221,7 +221,15 @@ public class AdvanceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 animation.button_flash(view);
                 animation.performVibration(vibrator);
-                inputDisplay.setText(inputDisplay.getText() + ".");
+                String currentInput = inputDisplay.getText().toString();
+                // Check if the current input already contains a dot
+                if (!currentInput.contains(".")) {
+                    // If there's no dot, add it to the input
+                    inputDisplay.setText(currentInput + ".");
+                } else {
+                    // If there's already a dot, show a message or perform any desired action
+                    Toast.makeText(AdvanceActivity.this, "Decimal point already exists", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         buttonClear.setOnClickListener(new View.OnClickListener() {
@@ -361,7 +369,11 @@ public class AdvanceActivity extends AppCompatActivity {
     }
     private void allCalculations() {
         boolean BEorNOTtoBE = oneLinerList.contains(currentSymbol);
-        if (!inputDisplay.getText().toString().isEmpty()||BEorNOTtoBE) {
+        if (inputDisplay.getText().toString().equals(".")) {
+            Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
+            endValue=0;
+        }
+        else if (!inputDisplay.getText().toString().isEmpty()||BEorNOTtoBE) {
             if (!Double.isNaN(endValue)&&!BEorNOTtoBE) {
                 operateValue = Double.parseDouble(inputDisplay.getText().toString());
                 if (currentSymbol == ADDITION)
@@ -373,7 +385,8 @@ public class AdvanceActivity extends AppCompatActivity {
                 else if (currentSymbol == DIVISION) {
                     if (operateValue != 0) {
                         endValue /= operateValue;
-                    } else {
+                    }
+                    else {
                         // Obsługa dzielenia przez zero
                         Toast.makeText(this, "Cannot divide by zero", Toast.LENGTH_SHORT).show();
                         return;
@@ -416,8 +429,11 @@ public class AdvanceActivity extends AppCompatActivity {
                 else if (currentSymbol == LOGARITHM_NATURAL) {
                     endValue = Math.log(endValue);
                 }
+                currentSymbol=0;
             }
-        } else {
+
+        }
+        else {
             // Obsługa pustego pola tekstowego
             Toast.makeText(this, "Enter a valid number", Toast.LENGTH_SHORT).show();
             return;

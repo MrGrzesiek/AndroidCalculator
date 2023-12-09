@@ -201,7 +201,15 @@ public class SimpleActivity extends AppCompatActivity {
             public void onClick(View view) {
                 animation.button_flash(view);
                 animation.performVibration(vibrator);
-                inputDisplay.setText(inputDisplay.getText() + ".");
+                String currentInput = inputDisplay.getText().toString();
+                // Check if the current input already contains a dot
+                if (!currentInput.contains(".")) {
+                    // If there's no dot, add it to the input
+                    inputDisplay.setText(currentInput + ".");
+                } else {
+                    // If there's already a dot, show a message or perform any desired action
+                    Toast.makeText(SimpleActivity.this, "Decimal point already exists", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         buttonClear.setOnClickListener(new View.OnClickListener() {
@@ -241,7 +249,11 @@ public class SimpleActivity extends AppCompatActivity {
         });
     }
     private void allCalculations() {
-        if (!inputDisplay.getText().toString().isEmpty()) {
+        if (inputDisplay.getText().toString().equals(".")) {
+            Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show();
+            endValue=0;
+        }
+        else if (!inputDisplay.getText().toString().isEmpty()) {
             operateValue = Double.parseDouble(inputDisplay.getText().toString());
 
             if (!Double.isNaN(endValue)) {
@@ -263,9 +275,11 @@ public class SimpleActivity extends AppCompatActivity {
             } else {
                 endValue = operateValue;
             }
-        } else {
+        }
+        else {
             // Obsługa pustego pola tekstowego
             Toast.makeText(this, "Enter a valid number", Toast.LENGTH_SHORT).show();
+
             return;
         }
     }
